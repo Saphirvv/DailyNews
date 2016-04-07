@@ -3,7 +3,7 @@ An exercise for MVP pattern~ also using the RSS resolve with SAX~  NOT FINISHED 
 
 <h2 style="font-color:#ff7d7d">Problem</h2>
   <p>Still have a problem with the rss part...</p>
-  <strong>WHY THIS CODE IS NOT WORK ?! </strong><br />
+  <strong>WHY DOES THIS CODE NOT WORK ?! </strong><br />
   <code>InputStream mInputStream = urlc.getInputStream();</code>
   <p>With no exception...only can be seen through the logcat...</p>
 <h2 style="font-color:#ff7d7d">Dependency</h2>
