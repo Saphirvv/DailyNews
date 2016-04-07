@@ -11,6 +11,7 @@ import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -48,16 +49,17 @@ public class LoadNewsListInteractorImpl implements LoadNewsListInteractor {
      * @return RSSFeed对象
      */
     private RSSFeed getFeed(String u) {
+        StringBuilder buffer = new StringBuilder();
         Log.e(TAG, "getFeed()***---------begin!!");
         try {
             Log.e(TAG, "getFeed()***----catch begin  ~~get111");
             URL url = new URL(u);
-            URLConnection urlc = url.openConnection();
+//            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            URLConnection connection = url.openConnection();
+//            int response = connection.getResponseCode();
             Log.e(TAG, "getFeed()***----catch begin  ~~get111CONNECT");
-            urlc.setConnectTimeout(1000);    //设置连接超时
-            urlc.setReadTimeout(1000);        //设置响应超时
+            InputStream inputStream = connection.getInputStream();//FAIL!!!
             Log.e(TAG, "getFeed()***----catch begin  ~~get111INPUT");
-            InputStream mInputStream = urlc.getInputStream();//FAIL!!!
 
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser parser = factory.newSAXParser();
@@ -67,14 +69,14 @@ public class LoadNewsListInteractorImpl implements LoadNewsListInteractor {
             reader.setContentHandler(handler);
             Log.e(TAG, "getFeed()***----catch begin  ~~get222");
 //            InputSource is = new InputSource(url.openStream());//FAIL!!!
-            InputSource is = new InputSource(mInputStream);
+            InputSource is = new InputSource(inputStream);
             Log.e(TAG, "getFeed()***----catch begin  ~~get333");
             reader.parse(is);
 
             Log.e(TAG, "getFeed()***----catch end");
             return handler.getRSSFeed();
         } catch (Exception e) {
-            Log.e(TAG,"getFeed()***----catch null");
+            Log.e(TAG,"getFeed()***----catch null" + e.getMessage());
             return null;
         }
     }

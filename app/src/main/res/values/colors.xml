@@ -6,4 +6,5 @@
 
     <!--首页-->
     <color name="title_blue">#2655c2</color>
+    <color name="title_pink">#ff7d7d</color>
 </resources>
