@@ -1,5 +1,5 @@
 # DailyNews
-An exercise for MVP pattern~ also using the RSS resolve with SAX~  NOT FINISHED YET=、=
+An exercise for MVP pattern~ also using the RSS parse with SAX~  NOT FINISHED YET=、=
 
 <h2 style="font-color:#ff7d7d">Problem</h2>
   <p>Still have a problem with the rss part...</p>
