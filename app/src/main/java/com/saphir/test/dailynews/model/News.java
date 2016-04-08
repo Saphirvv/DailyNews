@@ -18,6 +18,9 @@ public class News {
     String n_href;
 
     //constructor
+    public News() {
+    }
+
     public News(String title, String abs, String href) {
         this.n_title = title;
         this.n_abstract = abs;

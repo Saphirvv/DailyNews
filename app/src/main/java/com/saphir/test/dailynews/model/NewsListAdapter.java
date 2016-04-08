@@ -59,8 +59,11 @@ public class NewsListAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.tv_title.setText("" + mNews.get(position).getN_title());
-        holder.tv_abs.setText("" + mNews.get(position).getN_abstract());
+
+        String title_text = mNews.get(position).getN_title();
+        String abstract_text = mNews.get(position).getN_abstract();
+        holder.tv_title.setText("" + title_text);
+        holder.tv_abs.setText("" + abstract_text);
         return convertView;
     }
 }

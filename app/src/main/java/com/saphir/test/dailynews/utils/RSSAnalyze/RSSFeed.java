@@ -13,9 +13,9 @@ import java.util.Vector;
  * on 2016/4/6.
  */
 public class RSSFeed {
-    private String rssTitle = null;
-    private String rssAbstract = null;
-    private String rssLink = null;
+//    private String rssTitle = null;
+//    private String rssAbstract = null;
+//    private String rssLink = null;
 
     private int itemCount = 0;
 

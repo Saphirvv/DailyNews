@@ -18,7 +18,8 @@ public class MainPresenterImpl implements MainPresenter, LoadNewsListInteractor.
 
     //通过接口得到rss地址
     //This is a MOCK url
-    private String mUrl = "http://feeds.bbci.co.uk/news/world/rss.xml";
+//    private String mUrl = "http://feeds.bbci.co.uk/news/world/rss.xml";
+    private String mUrl ="http://blog.sina.com.cn/rss/1267454277.xml";
 
     private MainView mMainView;
     private LoadNewsListInteractor mLoadNewsListInteractor;
