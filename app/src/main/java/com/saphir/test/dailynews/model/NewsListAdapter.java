@@ -1,6 +1,7 @@
 package com.saphir.test.dailynews.model;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,7 @@ import java.util.List;
 public class NewsListAdapter extends BaseAdapter {
 
     Context mContext;
-    List<News> mNews = new ArrayList<>();
+    List<News> mNews = new ArrayList<News>();
 
     public NewsListAdapter(Context context, List<News> list) {
         this.mContext = context;
@@ -59,11 +60,15 @@ public class NewsListAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-
-        String title_text = mNews.get(position).getN_title();
-        String abstract_text = mNews.get(position).getN_abstract();
-        holder.tv_title.setText("" + title_text);
-        holder.tv_abs.setText("" + abstract_text);
+        holder.tv_title.setText(Html.fromHtml("<u>" + "" + mNews.get(position).getN_title() + "</u>"));
+        holder.tv_abs.setText(lengthFormat("" + mNews.get(position).getN_abstract()));
         return convertView;
+    }
+
+    public String lengthFormat(String s) {
+        if (s.length() > 26) {
+            return s.substring(0, 26) + "...";
+        }
+        return s;
     }
 }
