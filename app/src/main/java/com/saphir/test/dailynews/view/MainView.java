@@ -1,5 +1,7 @@
 package com.saphir.test.dailynews.view;
 
+import android.os.Bundle;
+
 import com.saphir.test.dailynews.model.News;
 
 import java.util.List;
@@ -20,4 +22,7 @@ public interface MainView {
 
     //测试点击事件
     void showMessage(String message);
+
+    //进入详情页
+    void intoDetail(Bundle b);
 }
