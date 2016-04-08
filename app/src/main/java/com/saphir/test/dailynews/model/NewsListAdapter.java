@@ -20,7 +20,7 @@ import java.util.List;
 public class NewsListAdapter extends BaseAdapter {
 
     Context mContext;
-    List<News> mNews = new ArrayList<News>();
+    List<News> mNews = new ArrayList<>();
 
     public NewsListAdapter(Context context, List<News> list) {
         this.mContext = context;

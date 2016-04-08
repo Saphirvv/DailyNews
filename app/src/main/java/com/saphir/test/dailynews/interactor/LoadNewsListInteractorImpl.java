@@ -34,7 +34,7 @@ public class LoadNewsListInteractorImpl implements LoadNewsListInteractor {
 
     private RSSFeed mFeed = null;
     private String rssUrl = "";//获取rss的地址
-    private List<News> newList = new ArrayList<News>();
+    private List<News> newList = new ArrayList<>();
 
     public LoadNewsListInteractorImpl(String rss_url) {
         this.rssUrl = rss_url;
@@ -133,7 +133,7 @@ public class LoadNewsListInteractorImpl implements LoadNewsListInteractor {
      * @return News 对象列表
      */
     private List<News> loadRssHandle() {
-        List<Map<String, String>> newsData = new ArrayList<>();
+        List<Map<String, String>> newsData;
 
         if (mFeed != null) {
             newsData = mFeed.getAllItemsForListView();
