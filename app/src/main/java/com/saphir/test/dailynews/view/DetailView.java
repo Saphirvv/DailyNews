@@ -1,5 +1,7 @@
 package com.saphir.test.dailynews.view;
 
+import com.saphir.test.dailynews.model.News;
+
 /**
  * 详情页 - UI变化
  * Created by Saphir
@@ -19,4 +21,7 @@ public interface DetailView {
 
     //返回首页
     void backToHome();
+
+    //得到页面显示的新闻数据
+    News getBundle();
 }

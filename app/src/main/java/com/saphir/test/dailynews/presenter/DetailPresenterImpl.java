@@ -1,5 +1,6 @@
 package com.saphir.test.dailynews.presenter;
 
+import com.saphir.test.dailynews.utils.FormatUtil;
 import com.saphir.test.dailynews.view.DetailView;
 
 /**
@@ -9,7 +10,10 @@ import com.saphir.test.dailynews.view.DetailView;
  */
 public class DetailPresenterImpl implements DetailPresenter {
 
-    private String mUrl ="https://www.baidu.com";
+    //标题所显示的最大字数
+    public final static int TITLEMAX = 10;
+
+    private String mUrl = "https://www.baidu.com";
 
     private DetailView mdv;
 
@@ -20,7 +24,12 @@ public class DetailPresenterImpl implements DetailPresenter {
     @Override
     public void onResume() {
         if (mdv != null) {
-            mdv.showProgress();
+            //test
+//            mdv.setWebView(mUrl);
+//            mdv.setNewsTitle("百度首页");
+            //getBundle
+            mdv.setWebView(mdv.getBundle().getN_href());
+            mdv.setNewsTitle(FormatUtil.lengthFormat(mdv.getBundle().getN_title(), TITLEMAX));
         }
     }
 

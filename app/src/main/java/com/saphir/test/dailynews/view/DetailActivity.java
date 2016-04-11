@@ -1,16 +1,17 @@
 package com.saphir.test.dailynews.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.saphir.test.dailynews.R;
+import com.saphir.test.dailynews.model.News;
 import com.saphir.test.dailynews.presenter.DetailPresenter;
 import com.saphir.test.dailynews.presenter.DetailPresenterImpl;
 
@@ -32,6 +33,7 @@ public class DetailActivity extends AppCompatActivity implements DetailView, Vie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         mDetailPresenter = new DetailPresenterImpl(this);
+
 
         initUI();
     }
@@ -81,6 +83,16 @@ public class DetailActivity extends AppCompatActivity implements DetailView, Vie
     }
 
     @Override
+    public News getBundle() {
+        Intent i = getIntent();
+        Bundle b = i.getExtras();
+        String nTitle = b.getString(News.TITLE);
+        String nHref = b.getString(News.HREF);
+
+        return new News(nTitle, null, nHref);
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         mDetailPresenter.onResume();
@@ -94,6 +106,12 @@ public class DetailActivity extends AppCompatActivity implements DetailView, Vie
 
     @Override
     public void onClick(View v) {
-        mDetailPresenter.onBackClick();
+        switch (v.getId()) {
+            case R.id.detail_iv_back:
+                mDetailPresenter.onBackClick();
+                break;
+            default:
+                break;
+        }
     }
 }
