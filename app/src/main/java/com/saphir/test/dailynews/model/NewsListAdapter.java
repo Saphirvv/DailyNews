@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.saphir.test.dailynews.R;
+import com.saphir.test.dailynews.utils.FormatUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,9 @@ import java.util.List;
  * on 2016/4/5.
  */
 public class NewsListAdapter extends BaseAdapter {
+
+    //新闻摘要可视的最大长度
+    public final static int FORMATMAX = 26;
 
     Context mContext;
     List<News> mNews = new ArrayList<News>();
@@ -61,14 +65,8 @@ public class NewsListAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         holder.tv_title.setText(Html.fromHtml("<u>" + "" + mNews.get(position).getN_title() + "</u>"));
-        holder.tv_abs.setText(lengthFormat("" + mNews.get(position).getN_abstract()));
+        holder.tv_abs.setText(FormatUtil.lengthFormat("" + mNews.get(position).getN_abstract(), FORMATMAX));
         return convertView;
     }
 
-    public String lengthFormat(String s) {
-        if (s.length() > 26) {
-            return s.substring(0, 26) + "...";
-        }
-        return s;
-    }
 }
