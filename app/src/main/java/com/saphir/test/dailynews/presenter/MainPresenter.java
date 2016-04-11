@@ -7,7 +7,7 @@ package com.saphir.test.dailynews.presenter;
  * on 2016/4/5.
  */
 public interface MainPresenter {
-    void onResume();
+    void onCreate();
 
     /**
      * 点击item进入新闻详情页

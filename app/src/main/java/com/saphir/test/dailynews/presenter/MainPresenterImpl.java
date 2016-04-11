@@ -32,9 +32,9 @@ public class MainPresenterImpl implements MainPresenter, LoadNewsListInteractor.
     }
 
     @Override
-    public void onResume() {
+    public void onCreate() {
 
-        Log.e("MainPresenter", "!!!---------onResume————————");
+        Log.e("MainPresenter", "!!!---------onCreate————————");
         if (mMainView != null) {
             mMainView.showProgress();
             mLoadNewsListInteractor.loadItems(this);

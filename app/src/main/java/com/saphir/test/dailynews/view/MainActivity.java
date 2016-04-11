@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements MainView, Adapter
         mMainPresenter = new MainPresenterImpl(this);
 
         initUI();
+
+        mMainPresenter.onCreate();
     }
 
     private void initUI() {
@@ -46,7 +48,6 @@ public class MainActivity extends AppCompatActivity implements MainView, Adapter
     @Override
     protected void onResume() {
         super.onResume();
-        mMainPresenter.onResume();
     }
 
     @Override
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements MainView, Adapter
     public void setItems(List<News> news) {
         NewsListAdapter nAdapter = new NewsListAdapter(this, news);
         mNewsList.setAdapter(nAdapter);
+        nAdapter.notifyDataSetChanged();
 
         this.m_listNews = news;
     }
