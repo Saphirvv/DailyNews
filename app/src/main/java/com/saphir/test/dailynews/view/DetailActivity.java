@@ -34,7 +34,6 @@ public class DetailActivity extends AppCompatActivity implements DetailView, Vie
         setContentView(R.layout.activity_detail);
         mDetailPresenter = new DetailPresenterImpl(this);
 
-
         initUI();
     }
 

@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements MainView, Adapter
         mMainPresenter = new MainPresenterImpl(this);
 
         initUI();
-
         mMainPresenter.onCreate();
     }
 
