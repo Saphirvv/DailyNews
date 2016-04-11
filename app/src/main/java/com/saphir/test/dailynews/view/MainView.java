@@ -25,4 +25,7 @@ public interface MainView {
 
     //进入详情页
     void intoDetail(Bundle b);
+
+    //得到存储了点击事件里的新闻数据的bundle
+    Bundle setBundle(int position);
 }

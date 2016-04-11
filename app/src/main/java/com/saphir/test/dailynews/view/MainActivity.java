@@ -15,6 +15,7 @@ import com.saphir.test.dailynews.model.NewsListAdapter;
 import com.saphir.test.dailynews.R;
 import com.saphir.test.dailynews.utils.ToastUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements MainView, AdapterView.OnItemClickListener {
@@ -22,6 +23,9 @@ public class MainActivity extends AppCompatActivity implements MainView, Adapter
     private ProgressBar pb;
     private ListView mNewsList;
     private MainPresenter mMainPresenter;
+
+    private List<News> m_listNews = new ArrayList<>();
+    private int position = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +69,8 @@ public class MainActivity extends AppCompatActivity implements MainView, Adapter
     public void setItems(List<News> news) {
         NewsListAdapter nAdapter = new NewsListAdapter(this, news);
         mNewsList.setAdapter(nAdapter);
+
+        this.m_listNews = news;
     }
 
     @Override
@@ -75,11 +81,26 @@ public class MainActivity extends AppCompatActivity implements MainView, Adapter
     @Override
     public void intoDetail(Bundle b) {
         Intent i = new Intent(this, DetailActivity.class);
-        startActivity(i, b);
+        i.putExtras(b);
+        startActivity(i);
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         mMainPresenter.onItemClicked(position);
+        this.position = position;
+    }
+
+    @Override
+    public Bundle setBundle(int position) {
+        if (position >= 0 ){
+            Bundle b = new Bundle();
+            b.putString(News.TITLE, m_listNews.get(position).getN_title());
+            b.putString(News.HREF, m_listNews.get(position).getN_href());
+
+            return b;
+        } else {
+            return null;
+        }
     }
 }

@@ -9,6 +9,10 @@ package com.saphir.test.dailynews.presenter;
 public interface MainPresenter {
     void onResume();
 
+    /**
+     * 点击item进入新闻详情页
+     * @param position 点击位置
+     */
     void onItemClicked(int position);
 
     void onDestroy();
