@@ -95,8 +95,8 @@ public class MainActivity extends AppCompatActivity implements MainView, Adapter
     public void intoDetail(Bundle b) {
         Intent i = new Intent(this, DetailActivity.class);
         i.putExtras(b);
-        i.putExtra(LISTTRANS, (Serializable) m_listNews);
-        i.putExtra(LISTPOSTRANS, position);
+//        i.putExtra(LISTTRANS, (Serializable) m_listNews);
+//        i.putExtra(LISTPOSTRANS, position);
         startActivity(i);
     }
 
