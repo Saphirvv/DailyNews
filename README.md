@@ -14,12 +14,15 @@ An exercise for MVP pattern~ also using the RSS parse with SAX~  NOT FINISHED YE
     <p><strong>WHERE</strong> Should I get that bundle ?</p>
     <p>&nbsp;&nbsp;<strong>SOLVE:</strong>&nbsp;We could put the methods about set or get Bundle in the View part.And then using them through the function of the presenter by invoke...At least I think it should be like this...
     <br />
-  <li>Problem 3:</li>
+  <li>Problem 3:(might be solved)</li>
     <p>Once I get into one of the news from that ListView, after I went back from the correspoding detail page, it will always being crashed...</p>
     <p>Maybe after solving this problem, this App could be used...</p>
     <p>But I still don't know why...and it's makes me rea;;y miserable of course...</p>
     <p>The Log which can be seen from the monitor just like this..</p>
     <code>FATAL EXCEPTION: main <br />java.lang.IllegalStateException: The content of the adapter has changed but ListView did not receive a notification. Make sure the content of your adapter is not modified from a background thread, but only from the UI thread. [in ListView(2131492968, class android.widget.ListView) with Adapter(class com.saphir.test.dailynews.model.NewsListAdapter)]</code>
+    <br />
+    <strong>since the refresh part of that ListView is in the onResume(), when I set finish with the DetailPage, it will do that method in the MainPage at once.So that might cause this crash. So I put this method in the onCreate(), and it looks work well.</strong>
+    <p>But I still not crealy understand why there will be a crash if I put that in the onResume()...or in another way to say is "Why it will cause a change of the ListViewAdapter(that's what the Log said) after I reload that ListView which exactly using the same adapter of course?"</p>
     <br />
 <h2 style="font-color:#ff7d7d">Dependency</h2>
   <div>
