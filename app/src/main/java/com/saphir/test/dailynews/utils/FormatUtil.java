@@ -1,7 +1,7 @@
 package com.saphir.test.dailynews.utils;
 
 /**
- * Created by bing.chen
+ * Created by Saphir
  * on 2016/4/11.
  */
 public class FormatUtil {

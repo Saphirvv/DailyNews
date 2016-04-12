@@ -21,7 +21,8 @@ import java.util.List;
  */
 public class NewsListAdapter extends BaseAdapter {
 
-    //新闻摘要可视的最大长度
+    //新闻摘要
+    //可视的最大长度
     public final static int FORMATMAX = 26;
 
     Context mContext;

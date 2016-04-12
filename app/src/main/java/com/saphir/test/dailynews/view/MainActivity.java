@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.accessibility.AccessibilityManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -75,8 +76,15 @@ public class MainActivity extends AppCompatActivity implements MainView, Adapter
     }
 
     @Override
-    public void showMessage(String message) {
-        ToastUtil.showShort(this, message);
+    public void showMessage(String message, int time) {
+        switch (time) {
+            case 0:
+                ToastUtil.showShort(this, message);
+                break;
+            case 1:
+                ToastUtil.showLong(this, message);
+                break;
+        }
     }
 
     @Override
@@ -94,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements MainView, Adapter
 
     @Override
     public Bundle setBundle(int position) {
-        if (position >= 0 ){
+        if (position >= 0) {
             Bundle b = new Bundle();
             b.putString(News.TITLE, m_listNews.get(position).getN_title());
             b.putString(News.HREF, m_listNews.get(position).getN_href());
@@ -103,5 +111,11 @@ public class MainActivity extends AppCompatActivity implements MainView, Adapter
         } else {
             return null;
         }
+    }
+
+    @Override
+    public String getUrl() {
+        String u = null;
+        return u;
     }
 }

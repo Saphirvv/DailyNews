@@ -16,16 +16,23 @@ import java.util.List;
  */
 public class MainPresenterImpl implements MainPresenter, LoadNewsListInteractor.onFinishedListener {
 
+    private static final int SHORT = 0;
+    private static final int LONG = 1;
     //通过接口得到rss地址
     //This is a MOCK url
 //    private String mUrl = "http://feeds.bbci.co.uk/news/world/rss.xml";
-    private String mUrl ="http://blog.sina.com.cn/rss/1267454277.xml";
+    private String mUrl = "http://blog.sina.com.cn/rss/1267454277.xml";
 
     private MainView mMainView;
     private LoadNewsListInteractor mLoadNewsListInteractor;
 
     public MainPresenterImpl(MainView mv) {
         this.mMainView = mv;
+//        if (mv.getUrl() != null) {
+//            this.mLoadNewsListInteractor = new LoadNewsListInteractorImpl(mv.getUrl());
+//        } else {
+//            mv.showMessage("读取新闻失败！请检查网络连接是否成功并重新进入！", LONG);
+//        }
         this.mLoadNewsListInteractor = new LoadNewsListInteractorImpl(mUrl);
 
         Log.e("MainPresenter", "!!!---------loadurl————————");
@@ -44,7 +51,7 @@ public class MainPresenterImpl implements MainPresenter, LoadNewsListInteractor.
     @Override
     public void onItemClicked(int position) {
         if (mMainView != null) {
-//            mMainView.showMessage("you have clicked the " + (position + 1) + " item.");
+//            mMainView.showMessage("you have clicked the " + (position + 1) + " item.", SHORT);
             mMainView.intoDetail(mMainView.setBundle(position));
         }
     }
