@@ -15,8 +15,10 @@ import com.saphir.test.dailynews.model.News;
 import com.saphir.test.dailynews.presenter.DetailPresenter;
 import com.saphir.test.dailynews.presenter.DetailPresenterImpl;
 
+import java.util.List;
+
 /**
- * rss详情页
+ * 新闻详情页
  * Created by Saphir
  * on 2016/4/5.
  */
@@ -89,6 +91,12 @@ public class DetailActivity extends AppCompatActivity implements DetailView, Vie
         String nHref = b.getString(News.HREF);
 
         return new News(nTitle, null, nHref);
+    }
+
+    @Override
+    public List<News> getListNews() {
+        Intent i = getIntent();
+        return (List<News>) i.getSerializableExtra(MainActivity.LISTTRANS);
     }
 
     @Override

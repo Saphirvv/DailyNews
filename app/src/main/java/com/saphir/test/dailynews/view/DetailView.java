@@ -2,6 +2,8 @@ package com.saphir.test.dailynews.view;
 
 import com.saphir.test.dailynews.model.News;
 
+import java.util.List;
+
 /**
  * 详情页 - UI变化
  * Created by Saphir
@@ -24,4 +26,7 @@ public interface DetailView {
 
     //得到页面显示的新闻数据
     News getBundle();
+
+    //得到整个新闻列表
+    List<News> getListNews();
 }

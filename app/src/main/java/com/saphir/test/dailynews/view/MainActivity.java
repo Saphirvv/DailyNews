@@ -16,10 +16,14 @@ import com.saphir.test.dailynews.model.NewsListAdapter;
 import com.saphir.test.dailynews.R;
 import com.saphir.test.dailynews.utils.ToastUtil;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements MainView, AdapterView.OnItemClickListener {
+
+    public static final String LISTTRANS = "listSer";
+    public static final String LISTPOSTRANS = "listPos";
 
     private ProgressBar pb;
     private ListView mNewsList;
@@ -91,6 +95,8 @@ public class MainActivity extends AppCompatActivity implements MainView, Adapter
     public void intoDetail(Bundle b) {
         Intent i = new Intent(this, DetailActivity.class);
         i.putExtras(b);
+        i.putExtra(LISTTRANS, (Serializable) m_listNews);
+        i.putExtra(LISTPOSTRANS, position);
         startActivity(i);
     }
 
