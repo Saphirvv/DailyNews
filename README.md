@@ -7,6 +7,12 @@ ___
 If I would like to make that `DetailPage` to detect the switch gesture for changing what is shown of that `WebView`. I should transport the para like the `List<News>` to there.  
 But the problem is, that `Intent` looks like can't put that much things...(I don't know what else to explain...)  
 After all, **I will figure it out**
+---
+But guess what! That problem above I didn't give a glance since it not that much important than the new stuff :stuck_out_tongue_winking_eye:  
+And I add a branch for changing the layout into the way like `dataBinding`, and it's really interesting...  
+Humm...And maybe I sould change the `ListView` to a `recycleView` for apply that tech.  
+**whatever~**:nail_care:
+
 ___
 #### Problem 1:(solved)
 WHY DOES THIS CODE NOT WORK ?!
