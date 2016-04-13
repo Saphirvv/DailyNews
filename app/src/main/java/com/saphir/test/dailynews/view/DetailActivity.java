@@ -1,6 +1,7 @@
 package com.saphir.test.dailynews.view;
 
 import android.content.Intent;
+import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -62,6 +63,7 @@ public class DetailActivity extends AppCompatActivity implements DetailView, Vie
     }
 
     @Override
+//    @BindingAdapter({"bind:web_url"})//若检测到传入的数据是string值，就会传到方法里
     public void setWebView(String url) {
         wv_detail_show.setWebViewClient(new WebViewClient());
         wv_detail_show.setHorizontalFadingEdgeEnabled(false);
@@ -77,10 +79,10 @@ public class DetailActivity extends AppCompatActivity implements DetailView, Vie
         wv_detail_show.loadUrl(url);
     }
 
-    @Override
-    public void setNewsTitle(String title) {
-        tv_detail_title.setText(title);
-    }
+//    @Override
+//    public void setNewsTitle(String title) {
+//        tv_detail_title.setText(title);
+//    }
 
     @Override
     public void backToHome() {
@@ -107,6 +109,7 @@ public class DetailActivity extends AppCompatActivity implements DetailView, Vie
     public void setBinding(News news) {
         News n = news;
         binding.setNews(n);
+//        binding.setWebUrl(n.getN_href());
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.saphir.test.dailynews.view;
 
+import android.webkit.WebView;
+
 import com.saphir.test.dailynews.model.News;
 
 import java.util.List;
@@ -19,7 +21,7 @@ public interface DetailView {
     void setWebView(String url);
 
     //title显示设置
-    void setNewsTitle(String title);
+//    void setNewsTitle(String title);
 
     //返回首页
     void backToHome();
