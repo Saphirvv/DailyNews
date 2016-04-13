@@ -12,7 +12,6 @@ public class News {
     public static final String HREF = "n_href";
 
     String n_title;
-    //    String n_time;
     String n_abstract;
     String n_content;
     String n_href;

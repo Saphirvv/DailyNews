@@ -1,6 +1,7 @@
 package com.saphir.test.dailynews.view;
 
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.saphir.test.dailynews.R;
+import com.saphir.test.dailynews.databinding.ActivityDetailBinding;
 import com.saphir.test.dailynews.model.News;
 import com.saphir.test.dailynews.presenter.DetailPresenter;
 import com.saphir.test.dailynews.presenter.DetailPresenterImpl;
@@ -29,11 +31,13 @@ public class DetailActivity extends AppCompatActivity implements DetailView, Vie
     private ProgressBar pb_load;
 
     private DetailPresenter mDetailPresenter;
+    private ActivityDetailBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
+//        setContentView(R.layout.activity_detail);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_detail);
         mDetailPresenter = new DetailPresenterImpl(this);
 
         initUI();
@@ -97,6 +101,12 @@ public class DetailActivity extends AppCompatActivity implements DetailView, Vie
     public List<News> getListNews() {
         Intent i = getIntent();
         return (List<News>) i.getSerializableExtra(MainActivity.LISTTRANS);
+    }
+
+    @Override
+    public void setBinding(News news) {
+        News n = news;
+        binding.setNews(n);
     }
 
     @Override

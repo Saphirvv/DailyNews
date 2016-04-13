@@ -29,7 +29,9 @@ public class DetailPresenterImpl implements DetailPresenter {
 //            mdv.setNewsTitle("百度首页");
             //getBundle
             mdv.setWebView(mdv.getBundle().getN_href());
-            mdv.setNewsTitle(FormatUtil.lengthFormat(mdv.getBundle().getN_title(), TITLEMAX));
+//            mdv.setNewsTitle(FormatUtil.lengthFormat(mdv.getBundle().getN_title(), TITLEMAX));
+            //NEW-TECH！！dataBinding中定义了标题的变化及格式化
+            mdv.setBinding(mdv.getBundle());
         }
     }
 

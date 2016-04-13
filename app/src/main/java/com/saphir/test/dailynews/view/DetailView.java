@@ -29,4 +29,6 @@ public interface DetailView {
 
     //得到整个新闻列表
     List<News> getListNews();
+
+    void setBinding(News news);
 }
