@@ -57,4 +57,6 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.ViewHolder
     public int getItemCount() {
         return mNewses.size();
     }
+
+
 }

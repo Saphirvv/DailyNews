@@ -24,7 +24,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements MainView, AdapterView.OnItemClickListener {
+import jp.wasabeef.recyclerview.animators.FadeInDownAnimator;
+
+public class MainActivity extends AppCompatActivity implements MainView {
 
     public static final String LISTTRANS = "listSer";
     public static final String LISTPOSTRANS = "listPos";
@@ -88,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements MainView, Adapter
 
         mNewsList.setLayoutManager(layoutManager);
         mNewsList.setItemAnimator(new DefaultItemAnimator());
+//        mNewsList.setItemAnimator(new FadeInDownAnimator());
         mNewsList.addItemDecoration(new DividerLinearItemDecoration(this, DividerLinearItemDecoration.VERTICAL_LIST));
         mNewsList.setAdapter(rvAdapter);
 
@@ -115,11 +118,11 @@ public class MainActivity extends AppCompatActivity implements MainView, Adapter
         startActivity(i);
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        mMainPresenter.onItemClicked(position);
-        this.position = position;
-    }
+//    @Override
+//    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//        mMainPresenter.onItemClicked(position);
+//        this.position = position;
+//    }
 
     @Override
     public Bundle setBundle(int position) {
