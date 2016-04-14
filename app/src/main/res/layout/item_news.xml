@@ -7,16 +7,23 @@
 
         <import type="com.saphir.test.dailynews.utils.FormatUtil"/>
 
+        <import type="com.saphir.test.dailynews.viewModel.NewsItemViewModel"/>
+
         <variable
             name="news"
             type="News"/>
+
+        <variable
+            name="newsVM"
+            type="NewsItemViewModel"/>
     </data>
 
     <com.zhy.autolayout.AutoLinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:onClick="@{newsVM.onItemClick}">
 
         <TextView
             android:id="@+id/news_title"

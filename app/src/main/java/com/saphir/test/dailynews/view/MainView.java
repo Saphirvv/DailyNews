@@ -38,7 +38,7 @@ public interface MainView {
      * @param b 需要传递的参数
      *          i.extra包括新闻详情（News）新闻列表（List<News>)及当前位置(int)
      */
-    void intoDetail(Bundle b);
+//    void intoDetail(Bundle b);
 
     /**
      * 得到存储了点击事件里的（具体）新闻数据的bundle
@@ -46,7 +46,7 @@ public interface MainView {
      * @param position 当前点击的位置
      * @return 包含具体新闻数据的bundle
      */
-    Bundle setBundle(int position);
+//    Bundle setBundle(int position);
 
     /**
      * 得到存储了当前已解析的所有新闻数据的List的bundle

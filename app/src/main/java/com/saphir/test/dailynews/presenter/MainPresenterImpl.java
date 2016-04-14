@@ -48,13 +48,13 @@ public class MainPresenterImpl implements MainPresenter, LoadNewsListInteractor.
         }
     }
 
-    @Override
-    public void onItemClicked(int position) {
-        if (mMainView != null) {
-//            mMainView.showMessage("you have clicked the " + (position + 1) + " item.", SHORT);
-            mMainView.intoDetail(mMainView.setBundle(position));
-        }
-    }
+//    @Override
+//    public void onItemClicked(int position) {
+//        if (mMainView != null) {
+////            mMainView.showMessage("you have clicked the " + (position + 1) + " item.", SHORT);
+//            mMainView.intoDetail(mMainView.setBundle(position));
+//        }
+//    }
 
     @Override
     public void onDestroy() {

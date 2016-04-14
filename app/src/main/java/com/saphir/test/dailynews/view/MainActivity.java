@@ -109,14 +109,14 @@ public class MainActivity extends AppCompatActivity implements MainView {
         }
     }
 
-    @Override
-    public void intoDetail(Bundle b) {
-        Intent i = new Intent(this, DetailActivity.class);
-        i.putExtras(b);
-//        i.putExtra(LISTTRANS, (Serializable) m_listNews);
-//        i.putExtra(LISTPOSTRANS, position);
-        startActivity(i);
-    }
+//    @Override
+//    public void intoDetail(Bundle b) {
+//        Intent i = new Intent(this, DetailActivity.class);
+//        i.putExtras(b);
+////        i.putExtra(LISTTRANS, (Serializable) m_listNews);
+////        i.putExtra(LISTPOSTRANS, position);
+//        startActivity(i);
+//    }
 
 //    @Override
 //    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -124,18 +124,18 @@ public class MainActivity extends AppCompatActivity implements MainView {
 //        this.position = position;
 //    }
 
-    @Override
-    public Bundle setBundle(int position) {
-        if (position >= 0) {
-            Bundle b = new Bundle();
-            b.putString(News.TITLE, m_listNews.get(position).getN_title());
-            b.putString(News.HREF, m_listNews.get(position).getN_href());
-
-            return b;
-        } else {
-            return null;
-        }
-    }
+//    @Override
+//    public Bundle setBundle(int position) {
+//        if (position >= 0) {
+//            Bundle b = new Bundle();
+//            b.putString(News.TITLE, m_listNews.get(position).getN_title());
+//            b.putString(News.HREF, m_listNews.get(position).getN_href());
+//
+//            return b;
+//        } else {
+//            return null;
+//        }
+//    }
 
     @Override
     public String getUrl() {

@@ -1,9 +1,11 @@
 package com.saphir.test.dailynews.view;
 
+import android.content.Context;
 import android.webkit.WebView;
 
 import com.saphir.test.dailynews.model.News;
 
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -27,10 +29,14 @@ public interface DetailView {
     void backToHome();
 
     //得到页面显示的新闻数据
-    News getBundle();
+//    News getBundle();
 
     //得到整个新闻列表
     List<News> getListNews();
 
+    News getNews();
+
     void setBinding(News news);
+
+    Context getContext();
 }

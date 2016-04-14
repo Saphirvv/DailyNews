@@ -1,5 +1,6 @@
 package com.saphir.test.dailynews.view;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
@@ -18,6 +19,8 @@ import com.saphir.test.dailynews.model.News;
 import com.saphir.test.dailynews.presenter.DetailPresenter;
 import com.saphir.test.dailynews.presenter.DetailPresenterImpl;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,6 +29,8 @@ import java.util.List;
  * on 2016/4/5.
  */
 public class DetailActivity extends AppCompatActivity implements DetailView, View.OnClickListener {
+
+    public static final String EXTRA_NEWS = "extra_news";
 
     private TextView tv_detail_title;
     private WebView wv_detail_show;
@@ -52,6 +57,19 @@ public class DetailActivity extends AppCompatActivity implements DetailView, Vie
         findViewById(R.id.detail_iv_back).setOnClickListener(this);
     }
 
+    public static Intent launchDetail(Context context, News news) {
+        Intent intent = new Intent(context, DetailActivity.class);
+        //Method 1
+        ArrayList<News> listn = new ArrayList<>();
+        listn.add(news);
+        intent.putExtra(EXTRA_NEWS, (Serializable) listn);
+        //Method 2 - 把News定义为继承Serializable的类
+        //......
+        //intent.putExtra(EXTRA_NEWS, news);
+
+        return intent;
+    }
+
     @Override
     public void showProgress() {
         pb_load.setVisibility(View.VISIBLE);
@@ -67,20 +85,26 @@ public class DetailActivity extends AppCompatActivity implements DetailView, Vie
         this.finish();
     }
 
-    @Override
-    public News getBundle() {
-        Intent i = getIntent();
-        Bundle b = i.getExtras();
-        String nTitle = b.getString(News.TITLE);
-        String nHref = b.getString(News.HREF);
-
-        return new News(nTitle, null, nHref);
-    }
+//    @Override
+//    public News getBundle() {
+//        Intent i = getIntent();
+//        Bundle b = i.getExtras();
+//        String nTitle = b.getString(News.TITLE);
+//        String nHref = b.getString(News.HREF);
+//
+//        return new News(nTitle, null, nHref);
+//    }
 
     @Override
     public List<News> getListNews() {
         Intent i = getIntent();
-        return (List<News>) i.getSerializableExtra(MainActivity.LISTTRANS);
+        return (List<News>) i.getSerializableExtra(EXTRA_NEWS);
+    }
+
+    @Override
+    public News getNews() {
+        List<News> n = getListNews();
+        return n.get(0);
     }
 
     @Override
@@ -111,5 +135,10 @@ public class DetailActivity extends AppCompatActivity implements DetailView, Vie
             default:
                 break;
         }
+    }
+
+    @Override
+    public Context getContext() {
+        return DetailActivity.this;
     }
 }
