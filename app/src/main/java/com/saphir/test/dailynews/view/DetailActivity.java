@@ -1,5 +1,6 @@
 package com.saphir.test.dailynews.view;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.BindingAdapter;
@@ -7,6 +8,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -28,7 +30,7 @@ import java.util.List;
  * Created by Saphir
  * on 2016/4/5.
  */
-public class DetailActivity extends AppCompatActivity implements DetailView, View.OnClickListener {
+public class DetailActivity extends Activity implements DetailView, View.OnClickListener {
 
     public static final String EXTRA_NEWS = "extra_news";
 
@@ -42,6 +44,7 @@ public class DetailActivity extends AppCompatActivity implements DetailView, Vie
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 //        setContentView(R.layout.activity_detail);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detail);
         mDetailPresenter = new DetailPresenterImpl(this);
