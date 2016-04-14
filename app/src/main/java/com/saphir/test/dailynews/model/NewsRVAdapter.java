@@ -39,6 +39,7 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.ViewHolder
         }
 
         public void bind(@NonNull News news) {
+            binding.setNews(news);
             //binding和VM的交互
             if (binding.getNewsVM() == null) {
                 binding.setNewsVM(new NewsItemViewModel(news, itemView.getContext()));

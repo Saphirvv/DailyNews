@@ -17,7 +17,7 @@ public class FormatUtil {
      * @return 已格式化的字符串
      */
     public static String lengthFormat(String s, int length) {
-        if (s.length() > length) {
+        if (s != null && s.length() > length) {
             return s.substring(0, length) + "...";
         }
         return s;

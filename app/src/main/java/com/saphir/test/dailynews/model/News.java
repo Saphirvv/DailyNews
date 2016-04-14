@@ -1,11 +1,13 @@
 package com.saphir.test.dailynews.model;
 
+import java.io.Serializable;
+
 /**
  * News实体类
  * Created by Saphir
  * on 2016/4/5.
  */
-public class News {
+public class News implements Serializable {
     public static final String TITLE = "n_title";
     public static final String ABSTRACT = "n_abstract";
     public static final String CONTENT = "n_content";

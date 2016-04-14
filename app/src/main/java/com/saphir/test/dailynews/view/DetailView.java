@@ -32,7 +32,7 @@ public interface DetailView {
 //    News getBundle();
 
     //得到整个新闻列表
-    List<News> getListNews();
+//    List<News> getListNews();
 
     News getNews();
 
