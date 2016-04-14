@@ -26,7 +26,7 @@ public class DetailPresenterImpl implements DetailPresenter {
         if (mdv != null) {
             //getBundle
             //OMG~说是会自己调用，不用手工调。。真的假的
-            mdv.setWebView(mdv.getBundle().getN_href());
+//            mdv.setWebView(mdv.getBundle().getN_href());
 //            mdv.setNewsTitle(FormatUtil.lengthFormat(mdv.getBundle().getN_title(), TITLEMAX));
             //NEW-TECH！！dataBinding中定义了标题的变化及格式化
             mdv.setBinding(mdv.getBundle());

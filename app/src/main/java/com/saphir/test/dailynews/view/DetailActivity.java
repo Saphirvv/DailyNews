@@ -62,22 +62,22 @@ public class DetailActivity extends AppCompatActivity implements DetailView, Vie
         pb_load.setVisibility(View.GONE);
     }
 
-    @Override
-//    @BindingAdapter({"bind:web_url"})//若检测到传入的数据是string值，就会传到方法里
-    public void setWebView(String url) {
-        wv_detail_show.setWebViewClient(new WebViewClient());
-        wv_detail_show.setHorizontalFadingEdgeEnabled(false);
-        wv_detail_show.setVerticalScrollBarEnabled(false);
-
-        WebSettings ws = wv_detail_show.getSettings();
-        ws.setBuiltInZoomControls(true);// 隐藏缩放按钮
-        ws.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);// 排版适应屏幕
-        ws.setUseWideViewPort(true);// 可任意比例缩放
-        ws.setLoadWithOverviewMode(true);// setUseWideViewPort方法设置webview推荐使用的窗口。setLoadWithOverviewMode方法是设置webview加载的页面的模式。
-        ws.setTextZoom(120);
-
-        wv_detail_show.loadUrl(url);
-    }
+//    @Override
+////    @BindingAdapter({"bind:web_url"})//若检测到传入的数据是string值，就会传到方法里
+//    public void setWebView(String url) {
+//        wv_detail_show.setWebViewClient(new WebViewClient());
+//        wv_detail_show.setHorizontalFadingEdgeEnabled(false);
+//        wv_detail_show.setVerticalScrollBarEnabled(false);
+//
+//        WebSettings ws = wv_detail_show.getSettings();
+//        ws.setBuiltInZoomControls(true);// 隐藏缩放按钮
+//        ws.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);// 排版适应屏幕
+//        ws.setUseWideViewPort(true);// 可任意比例缩放
+//        ws.setLoadWithOverviewMode(true);// setUseWideViewPort方法设置webview推荐使用的窗口。setLoadWithOverviewMode方法是设置webview加载的页面的模式。
+//        ws.setTextZoom(120);
+//
+//        wv_detail_show.loadUrl(url);
+//    }
 
 //    @Override
 //    public void setNewsTitle(String title) {
@@ -109,7 +109,7 @@ public class DetailActivity extends AppCompatActivity implements DetailView, Vie
     public void setBinding(News news) {
         News n = news;
         binding.setNews(n);
-//        binding.setWebUrl(n.getN_href());
+        binding.setWebUrl(n.getN_href());
     }
 
     @Override

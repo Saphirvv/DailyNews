@@ -18,7 +18,7 @@ public interface DetailView {
     void hideProgress();
 
     //WebView显示配置
-    void setWebView(String url);
+//    void setWebView(String url);
 
     //title显示设置
 //    void setNewsTitle(String title);

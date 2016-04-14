@@ -11,9 +11,10 @@
         <variable
             name="news"
             type="News"/>
-        <!--<variable-->
-        <!--name="webUrl"-->
-        <!--type="String"/>-->
+
+        <variable
+            name="webUrl"
+            type="String"/>
     </data>
 
     <com.zhy.autolayout.AutoRelativeLayout
@@ -52,8 +53,8 @@
             <WebView
                 android:id="@+id/detail_wv_show"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-            <!--app:web_url="@{webUrl}"/>&lt;!&ndash; 使用setter方法 &ndash;&gt;-->
+                android:layout_height="match_parent"
+                app:webUrl="@{webUrl}"/><!-- 使用setter方法 -->
 
         </LinearLayout>
 
