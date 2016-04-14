@@ -3,11 +3,16 @@ package com.saphir.test.dailynews.view;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
+import com.saphir.test.dailynews.decoration.DividerLinearItemDecoration;
+import com.saphir.test.dailynews.model.NewsRVAdapter;
 import com.saphir.test.dailynews.presenter.MainPresenter;
 import com.saphir.test.dailynews.presenter.MainPresenterImpl;
 import com.saphir.test.dailynews.model.News;
@@ -25,7 +30,8 @@ public class MainActivity extends AppCompatActivity implements MainView, Adapter
     public static final String LISTPOSTRANS = "listPos";
 
     private ProgressBar pb;
-    private ListView mNewsList;
+    //    private ListView mNewsList;
+    private RecyclerView mNewsList;
     private MainPresenter mMainPresenter;
 
     private List<News> m_listNews = new ArrayList<>();
@@ -42,10 +48,11 @@ public class MainActivity extends AppCompatActivity implements MainView, Adapter
     }
 
     private void initUI() {
-        mNewsList = (ListView) findViewById(R.id.news_list);
+//        mNewsList = (ListView) findViewById(R.id.news_list);
+        mNewsList = (RecyclerView) findViewById(R.id.news_list);
         pb = (ProgressBar) findViewById(R.id.loading_pb);
 
-        mNewsList.setOnItemClickListener(this);
+//        mNewsList.setOnItemClickListener(this);
     }
 
     @Override
@@ -71,9 +78,18 @@ public class MainActivity extends AppCompatActivity implements MainView, Adapter
 
     @Override
     public void setItems(List<News> news) {
-        NewsListAdapter nAdapter = new NewsListAdapter(this, news);
-        mNewsList.setAdapter(nAdapter);
-        nAdapter.notifyDataSetChanged();
+//        NewsListAdapter nAdapter = new NewsListAdapter(this, news);
+//        mNewsList.setAdapter(nAdapter);
+//        nAdapter.notifyDataSetChanged();
+
+        NewsRVAdapter rvAdapter = new NewsRVAdapter(this, news);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+        mNewsList.setLayoutManager(layoutManager);
+        mNewsList.setItemAnimator(new DefaultItemAnimator());
+        mNewsList.addItemDecoration(new DividerLinearItemDecoration(this, DividerLinearItemDecoration.VERTICAL_LIST));
+        mNewsList.setAdapter(rvAdapter);
 
         this.m_listNews = news;
     }

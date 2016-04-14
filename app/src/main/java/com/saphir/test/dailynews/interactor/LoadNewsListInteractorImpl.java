@@ -32,6 +32,7 @@ public class LoadNewsListInteractorImpl implements LoadNewsListInteractor {
     private RSSFeed mFeed = null;
     private String rssUrl = "";//获取rss的地址
     private List<News> newList = new ArrayList<>();
+    private onFinishedListener mListener;
 
     public LoadNewsListInteractorImpl(String rss_url) {
         this.rssUrl = rss_url;
@@ -40,7 +41,9 @@ public class LoadNewsListInteractorImpl implements LoadNewsListInteractor {
 
     @Override
     public void loadItems(onFinishedListener listener) {
-        listener.onFinished(loadRSSFeed());
+        this.mListener = listener;
+        loadRSSFeed();
+//        listener.onFinished(loadRSSFeed());
     }
 
     /**
@@ -57,7 +60,7 @@ public class LoadNewsListInteractorImpl implements LoadNewsListInteractor {
     }
 
     /**
-     * 通过 url 获得 xm l并解析 xml 内容为 RSSFeed 对象
+     * 通过 url 获得 xml 并解析 xml 内容为 RSSFeed 对象
      *
      * @param u rss的地址
      * @return RSSFeed对象
@@ -147,6 +150,9 @@ public class LoadNewsListInteractorImpl implements LoadNewsListInteractor {
 
             Log.e(TAG, "******loadRSSFeed()*------FAIL!!");
         }
+        //使加载完成后再进行回调
+        mListener.onFinished(newList);
         return newList;
+
     }
 }
