@@ -9,9 +9,6 @@ import com.saphir.test.dailynews.viewModel.DetailView;
  */
 public class DetailPresenterImpl implements DetailPresenter {
 
-    //标题所显示的最大字数
-    public final static int TITLEMAX = 10;
-
     private String mUrl = "https://www.baidu.com";
 
     private DetailView mdv;
@@ -34,7 +31,7 @@ public class DetailPresenterImpl implements DetailPresenter {
         }
     }
 
-    //点击返回键调用
+    //invoke by btn_back
     @Override
     public void onBackClick() {
         if (mdv != null) {

@@ -1,16 +1,11 @@
 package com.saphir.test.dailynews.view;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.Window;
-import android.webkit.WebView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.saphir.test.dailynews.R;
 import com.saphir.test.dailynews.databinding.ActivityDetailBinding;
@@ -28,8 +23,6 @@ import com.saphir.test.dailynews.viewModel.DetailViewModel;
 public class DetailActivity extends AppCompatActivity implements DetailView, View.OnClickListener {
 
     public static final String EXTRA_NEWS = "extra_news";
-
-    private ProgressBar pb_load;
 
     private DetailPresenter mDetailPresenter;
     private ActivityDetailBinding binding;

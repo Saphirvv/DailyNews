@@ -9,10 +9,6 @@
         <variable
             name="detailNews"
             type="DetailViewModel"/>
-
-        <!--<variable-->
-        <!--name="webUrl"-->
-        <!--type="String"/>-->
     </data>
 
     <com.zhy.autolayout.AutoRelativeLayout

@@ -1,9 +1,6 @@
 package com.saphir.test.dailynews.viewModel;
 
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
-import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -15,7 +12,7 @@ import com.saphir.test.dailynews.utils.FormatUtil;
  * Created by Saphir
  * on 2016/4/15.
  */
-public class DetailViewModel extends BaseObservable {
+public class DetailViewModel {
     private static final int TITLE_MAX = 24;
 
     private News mNews;
