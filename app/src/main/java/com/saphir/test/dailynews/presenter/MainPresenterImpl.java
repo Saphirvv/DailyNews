@@ -20,7 +20,6 @@ public class MainPresenterImpl implements MainPresenter, LoadNewsListInteractor.
     private static final int LONG = 1;
     //通过接口得到rss地址
     //This is a MOCK url
-//    private String mUrl = "http://feeds.bbci.co.uk/news/world/rss.xml";
     private String mUrl = "http://blog.sina.com.cn/rss/1267454277.xml";
 
     private MainView mMainView;
@@ -43,18 +42,9 @@ public class MainPresenterImpl implements MainPresenter, LoadNewsListInteractor.
 
         Log.e("MainPresenter", "!!!---------onCreate————————");
         if (mMainView != null) {
-            mMainView.showProgress();
             mLoadNewsListInteractor.loadItems(this);
         }
     }
-
-//    @Override
-//    public void onItemClicked(int position) {
-//        if (mMainView != null) {
-////            mMainView.showMessage("you have clicked the " + (position + 1) + " item.", SHORT);
-//            mMainView.intoDetail(mMainView.setBundle(position));
-//        }
-//    }
 
     @Override
     public void onDestroy() {
@@ -67,7 +57,6 @@ public class MainPresenterImpl implements MainPresenter, LoadNewsListInteractor.
     public void onFinished(List<News> newsList) {
         if (mMainView != null) {
             mMainView.setItems(newsList);
-            mMainView.hideProgress();
 
             Log.e("MainPresenter", "---------loadurl———Finished!!—————");
         }

@@ -7,7 +7,7 @@
 
         <import type="com.saphir.test.dailynews.utils.FormatUtil"/>
 
-        <import type="com.saphir.test.dailynews.viewModel.NewsItemViewModel"/>
+        <import type="com.saphir.test.dailynews.viewModel.ItemNewsViewModel"/>
 
         <variable
             name="news"
@@ -15,7 +15,7 @@
 
         <variable
             name="newsVM"
-            type="NewsItemViewModel"/>
+            type="ItemNewsViewModel"/>
     </data>
 
     <com.zhy.autolayout.AutoLinearLayout

@@ -11,12 +11,12 @@ import com.saphir.test.dailynews.view.DetailActivity;
  * Created by Saphir
  * on 2016/4/14.
  */
-public class NewsItemViewModel extends BaseObservable {
+public class ItemNewsViewModel extends BaseObservable {
 
     private News mNews;
     private Context mContext;
 
-    public NewsItemViewModel(News news, Context context) {
+    public ItemNewsViewModel(News news, Context context) {
         mNews = news;
         mContext = context;
     }

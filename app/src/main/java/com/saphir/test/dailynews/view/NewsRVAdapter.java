@@ -10,9 +10,10 @@ import android.view.ViewGroup;
 import com.saphir.test.dailynews.R;
 import com.saphir.test.dailynews.databinding.ItemNewsBinding;
 import com.saphir.test.dailynews.model.News;
-import com.saphir.test.dailynews.viewModel.NewsItemViewModel;
+import com.saphir.test.dailynews.viewModel.ItemNewsViewModel;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -24,6 +25,10 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.ViewHolder
 
     private List<News> mNewses = new ArrayList<>();
     Context mContext;
+
+    public NewsRVAdapter() {
+        this.mNewses = Collections.emptyList();
+    }
 
     public NewsRVAdapter(Context c, List<News> list) {
         mContext = c;
@@ -42,7 +47,7 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.ViewHolder
             binding.setNews(news);
             //binding和VM的交互
             if (binding.getNewsVM() == null) {
-                binding.setNewsVM(new NewsItemViewModel(news, itemView.getContext()));
+                binding.setNewsVM(new ItemNewsViewModel(news, itemView.getContext()));
             } else {
                 binding.getNewsVM().setNews(news);
             }
