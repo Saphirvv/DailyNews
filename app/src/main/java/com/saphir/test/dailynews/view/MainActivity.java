@@ -1,32 +1,24 @@
 package com.saphir.test.dailynews.view;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.saphir.test.dailynews.decoration.DividerLinearItemDecoration;
-import com.saphir.test.dailynews.model.NewsRVAdapter;
 import com.saphir.test.dailynews.presenter.MainPresenter;
 import com.saphir.test.dailynews.presenter.MainPresenterImpl;
 import com.saphir.test.dailynews.model.News;
-import com.saphir.test.dailynews.model.NewsListAdapter;
 import com.saphir.test.dailynews.R;
 import com.saphir.test.dailynews.utils.ToastUtil;
+import com.saphir.test.dailynews.viewModel.MainView;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import jp.wasabeef.recyclerview.animators.FadeInDownAnimator;
 
 public class MainActivity extends Activity implements MainView {
 

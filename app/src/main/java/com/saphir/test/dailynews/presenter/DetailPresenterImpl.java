@@ -1,7 +1,6 @@
 package com.saphir.test.dailynews.presenter;
 
-import com.saphir.test.dailynews.utils.FormatUtil;
-import com.saphir.test.dailynews.view.DetailView;
+import com.saphir.test.dailynews.viewModel.DetailView;
 
 /**
  * 详情页 - 业务逻辑实现

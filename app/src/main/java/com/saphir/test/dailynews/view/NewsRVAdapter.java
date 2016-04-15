@@ -1,7 +1,6 @@
-package com.saphir.test.dailynews.model;
+package com.saphir.test.dailynews.view;
 
 import android.content.Context;
-import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.saphir.test.dailynews.R;
 import com.saphir.test.dailynews.databinding.ItemNewsBinding;
+import com.saphir.test.dailynews.model.News;
 import com.saphir.test.dailynews.viewModel.NewsItemViewModel;
 
 import java.util.ArrayList;

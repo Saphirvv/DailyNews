@@ -1,4 +1,4 @@
-package com.saphir.test.dailynews.model;
+package com.saphir.test.dailynews.view;
 
 import android.content.Context;
 import android.text.Html;
@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.saphir.test.dailynews.R;
+import com.saphir.test.dailynews.model.News;
 import com.saphir.test.dailynews.utils.FormatUtil;
 
 import java.util.ArrayList;

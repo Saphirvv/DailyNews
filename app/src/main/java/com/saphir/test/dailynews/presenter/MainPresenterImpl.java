@@ -5,7 +5,7 @@ import android.util.Log;
 import com.saphir.test.dailynews.interactor.LoadNewsListInteractor;
 import com.saphir.test.dailynews.interactor.LoadNewsListInteractorImpl;
 import com.saphir.test.dailynews.model.News;
-import com.saphir.test.dailynews.view.MainView;
+import com.saphir.test.dailynews.viewModel.MainView;
 
 import java.util.List;
 

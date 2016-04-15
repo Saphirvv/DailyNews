@@ -1,4 +1,4 @@
-package com.saphir.test.dailynews.view;
+package com.saphir.test.dailynews.viewModel;
 
 import android.content.Context;
 import android.webkit.WebView;
