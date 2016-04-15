@@ -4,22 +4,31 @@
 
     <data>
 
-        <import type="com.saphir.test.dailynews.model.News"/>
-
-        <import type="com.saphir.test.dailynews.utils.FormatUtil"/>
+        <import type="com.saphir.test.dailynews.viewModel.DetailViewModel"/>
 
         <variable
-            name="news"
-            type="News"/>
+            name="detailNews"
+            type="DetailViewModel"/>
 
-        <variable
-            name="webUrl"
-            type="String"/>
+        <!--<variable-->
+        <!--name="webUrl"-->
+        <!--type="String"/>-->
     </data>
 
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
+
+        <!--<android.support.v7.widget.Toolbar-->
+        <!--android:id="@+id/da_toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:minHeight="?attr/actionBarSize"-->
+        <!--android:background="?attr/colorPrimary"-->
+        <!--android:navigationIcon="@drawable/back_n"-->
+        <!--android:title="@{detailNews.title}"-->
+        <!--android:logo="@mipmap/ic_launcher"/>-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,17 +36,17 @@
             android:orientation="vertical">
 
             <FrameLayout
+                android:id="@+id/fl_hide_under21"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/title_blue"
                 android:padding="8dp">
 
                 <TextView
-                    android:id="@+id/detail_tv_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="@{FormatUtil.lengthFormat(news.n_title,16)}"
+                    android:text="@{detailNews.title}"
                     android:textColor="@color/white"
                     android:textSize="16sp"/>
 
@@ -51,20 +60,11 @@
             </FrameLayout>
 
             <WebView
-                android:id="@+id/detail_wv_show"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:webUrl="@{webUrl}"/><!-- 使用setter方法 -->
+                app:webUrl="@{detailNews.url}"/>
 
         </LinearLayout>
-
-        <ProgressBar
-            android:id="@+id/loading_pb_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="650px"
-            android:layout_marginTop="1000px"
-            android:visibility="gone"/>
 
     </com.zhy.autolayout.AutoRelativeLayout>
 </layout>

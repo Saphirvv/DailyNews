@@ -13,6 +13,8 @@ public class News implements Serializable {
     public static final String CONTENT = "n_content";
     public static final String HREF = "n_href";
 
+//    @SerializedName("gender") public String mGender;
+
     String n_title;
     String n_abstract;
     String n_content;

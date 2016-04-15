@@ -32,7 +32,6 @@
             android:name="design_height"
             android:value="2560">
         </meta-data>
-
     </application>
 
 </manifest>
