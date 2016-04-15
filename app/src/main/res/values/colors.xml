@@ -7,6 +7,8 @@
     <!--首页-->
     <color name="title_blue">#1a2476</color>
     <color name="title_pink">#ff7d7d</color>
+    <color name="item_select">#778ea7</color>
+    <color name="item_bg">#dfdfdf</color>
 
     <!--详情页-->
     <color name="white">#FFFFFF</color>
