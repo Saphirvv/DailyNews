@@ -8,7 +8,7 @@ import com.saphir.test.dailynews.model.News;
 import com.saphir.test.dailynews.view.DetailActivity;
 
 /**
- * Created by bing.chen
+ * Created by Saphir
  * on 2016/4/14.
  */
 public class NewsItemViewModel extends BaseObservable {
