@@ -1,4 +1,4 @@
-package com.saphir.test.dailynews.view;
+package com.saphir.test.dailynews.Detail;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,10 +10,6 @@ import android.view.View;
 import com.saphir.test.dailynews.R;
 import com.saphir.test.dailynews.databinding.ActivityDetailBinding;
 import com.saphir.test.dailynews.model.News;
-import com.saphir.test.dailynews.presenter.DetailPresenter;
-import com.saphir.test.dailynews.presenter.DetailPresenterImpl;
-import com.saphir.test.dailynews.viewModel.DetailView;
-import com.saphir.test.dailynews.viewModel.DetailViewModel;
 
 /**
  * 新闻详情页

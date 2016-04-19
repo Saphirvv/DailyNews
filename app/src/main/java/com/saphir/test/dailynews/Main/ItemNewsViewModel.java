@@ -1,11 +1,11 @@
-package com.saphir.test.dailynews.viewModel;
+package com.saphir.test.dailynews.Main;
 
 import android.content.Context;
 import android.databinding.BaseObservable;
 import android.view.View;
 
 import com.saphir.test.dailynews.model.News;
-import com.saphir.test.dailynews.view.DetailActivity;
+import com.saphir.test.dailynews.Detail.DetailActivity;
 
 /**
  * Created by Saphir

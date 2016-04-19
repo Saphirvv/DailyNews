@@ -1,20 +1,22 @@
-package com.saphir.test.dailynews.presenter;
+package com.saphir.test.dailynews.Main;
 
 import android.util.Log;
 
-import com.saphir.test.dailynews.interactor.LoadNewsListInteractor;
-import com.saphir.test.dailynews.interactor.LoadNewsListInteractorImpl;
+import com.saphir.test.dailynews.Main.interactor.LoadNewsListInteractor;
+import com.saphir.test.dailynews.Main.interactor.LoadNewsListInteractorImpl;
 import com.saphir.test.dailynews.model.News;
-import com.saphir.test.dailynews.viewModel.MainView;
+
+import org.antlr.v4.runtime.misc.NotNull;
 
 import java.util.List;
 
 /**
- * 首页 - 业务逻辑实现
+ * HomePage - listens to users actions from the UI({@link MainActivity} ,
+ * ---------- retrieves the data and updates the UI as required.
  * Created by Saphir
  * on 2016/4/6.
  */
-public class MainPresenterImpl implements MainPresenter, LoadNewsListInteractor.onFinishedListener {
+public class MainPresenterImpl implements MainContract.Presenter, LoadNewsListInteractor.onFinishedListener {
 
     private static final int SHORT = 0;
     private static final int LONG = 1;
@@ -22,11 +24,12 @@ public class MainPresenterImpl implements MainPresenter, LoadNewsListInteractor.
     //This is a MOCK url
     private String mUrl = "http://blog.sina.com.cn/rss/1267454277.xml";
 
-    private MainView mMainView;
+    private MainContract.View mMainView;
     private LoadNewsListInteractor mLoadNewsListInteractor;
 
-    public MainPresenterImpl(MainView mv) {
+    public MainPresenterImpl(@NotNull MainContract.View mv) {
         this.mMainView = mv;
+        mMainView.setPresenter(this);
 //        if (mv.getUrl() != null) {
 //            this.mLoadNewsListInteractor = new LoadNewsListInteractorImpl(mv.getUrl());
 //        } else {
@@ -38,8 +41,7 @@ public class MainPresenterImpl implements MainPresenter, LoadNewsListInteractor.
     }
 
     @Override
-    public void onCreate() {
-
+    public void start() {
         Log.e("MainPresenter", "!!!---------onCreate————————");
         if (mMainView != null) {
             mLoadNewsListInteractor.loadItems(this);
@@ -61,4 +63,6 @@ public class MainPresenterImpl implements MainPresenter, LoadNewsListInteractor.
             Log.e("MainPresenter", "---------loadurl———Finished!!—————");
         }
     }
+
+
 }

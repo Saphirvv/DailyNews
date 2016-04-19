@@ -1,26 +1,21 @@
-package com.saphir.test.dailynews.view;
+package com.saphir.test.dailynews.Main;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.view.Window;
-import android.widget.ProgressBar;
 
-import com.saphir.test.dailynews.decoration.DividerLinearItemDecoration;
-import com.saphir.test.dailynews.presenter.MainPresenter;
-import com.saphir.test.dailynews.presenter.MainPresenterImpl;
+import com.saphir.test.dailynews.utils.decoration.DividerLinearItemDecoration;
 import com.saphir.test.dailynews.model.News;
 import com.saphir.test.dailynews.R;
 import com.saphir.test.dailynews.utils.ToastUtil;
-import com.saphir.test.dailynews.viewModel.MainView;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity implements MainView {
+public class MainActivity extends Activity implements MainContract.View {
 
     public static final String LISTTRANS = "listSer";
     public static final String LISTPOSTRANS = "listPos";
@@ -34,8 +29,7 @@ public class MainActivity extends Activity implements MainView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_main);
-        mMainPresenter = new MainPresenterImpl(this);
+        setContentView(R.layout.main_fragment);
 
         initUI();
         mMainPresenter.onCreate();
@@ -43,6 +37,11 @@ public class MainActivity extends Activity implements MainView {
 
     private void initUI() {
         mNewsList = (RecyclerView) findViewById(R.id.news_list);
+    }
+
+    @Override
+    public void setPresenter(@NonNull MainContract.Presenter presenter) {
+//        mMainPresenter = checkNotNull(presenter);
     }
 
     @Override

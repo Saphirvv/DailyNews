@@ -13,7 +13,7 @@
 
         <!--固定竖屏-->
         <activity
-            android:name=".view.MainActivity"
+            android:name=".Main.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.DetailActivity"
+            android:name=".Detail.DetailActivity"
             android:screenOrientation="portrait"/>
 
         <meta-data

@@ -1,4 +1,4 @@
-package com.saphir.test.dailynews.viewModel;
+package com.saphir.test.dailynews.Main;
 
 import android.databinding.ObservableInt;
 

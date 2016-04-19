@@ -1,4 +1,4 @@
-package com.saphir.test.dailynews.viewModel;
+package com.saphir.test.dailynews.Detail;
 
 import android.content.Context;
 

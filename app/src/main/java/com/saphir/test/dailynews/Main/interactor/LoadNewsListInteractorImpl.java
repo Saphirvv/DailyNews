@@ -1,4 +1,4 @@
-package com.saphir.test.dailynews.interactor;
+package com.saphir.test.dailynews.Main.interactor;
 
 import android.os.Handler;
 import android.os.Message;

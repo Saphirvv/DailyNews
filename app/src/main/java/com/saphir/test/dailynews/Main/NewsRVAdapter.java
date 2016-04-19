@@ -1,4 +1,4 @@
-package com.saphir.test.dailynews.view;
+package com.saphir.test.dailynews.Main;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import com.saphir.test.dailynews.R;
 import com.saphir.test.dailynews.databinding.ItemNewsBinding;
 import com.saphir.test.dailynews.model.News;
-import com.saphir.test.dailynews.viewModel.ItemNewsViewModel;
 
 import java.util.ArrayList;
 import java.util.Collections;

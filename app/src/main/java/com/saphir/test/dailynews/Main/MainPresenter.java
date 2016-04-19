@@ -1,4 +1,4 @@
-package com.saphir.test.dailynews.presenter;
+package com.saphir.test.dailynews.Main;
 
 /**
  * 首页 - 业务逻辑

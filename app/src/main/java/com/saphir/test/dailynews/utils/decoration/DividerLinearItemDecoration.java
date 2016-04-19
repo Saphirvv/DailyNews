@@ -1,4 +1,4 @@
-package com.saphir.test.dailynews.decoration;
+package com.saphir.test.dailynews.utils.decoration;
 
 import android.content.Context;
 import android.content.res.TypedArray;
