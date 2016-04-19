@@ -1,76 +1,76 @@
 package com.saphir.test.dailynews.Main;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.view.Window;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
-import com.saphir.test.dailynews.utils.decoration.DividerLinearItemDecoration;
-import com.saphir.test.dailynews.model.News;
+import com.saphir.test.dailynews.Star.StarNewsActivity;
+import com.saphir.test.dailynews.utils.ActivityUtils;
 import com.saphir.test.dailynews.R;
 import com.saphir.test.dailynews.utils.ToastUtil;
 
-import java.util.List;
-
-public class MainActivity extends Activity implements MainContract.View {
+public class MainActivity extends AppCompatActivity {
 
     public static final String LISTTRANS = "listSer";
     public static final String LISTPOSTRANS = "listPos";
 
-    private RecyclerView mNewsList;
-    private MainPresenter mMainPresenter;
+    private MainContract.Presenter mMainPresenter;
+    private DrawerLayout mDrawerLayout;
 
     //    private List<News> m_listNews = new ArrayList<>();
-//    private int position = -1;
+    //    private int position = -1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.main_fragment);
+        setContentView(R.layout.activity_main);
 
-        initUI();
-        mMainPresenter.onCreate();
+        // Set up the toolbar.
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar ab = getSupportActionBar();
+        ab.setHomeAsUpIndicator(R.drawable.ic_menu);
+        ab.setDisplayHomeAsUpEnabled(true);
+
+        // Set up the navigation drawer.
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerLayout.setStatusBarBackground(R.color.colorPrimaryDark);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        if (navigationView != null) {
+            setupDrawerContent(navigationView);
+        }
+
+        // Set up the Fragment
+        MainFragment mainFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.contentFrame);
+        if (mainFragment == null) {
+            //create the fragment
+            mainFragment = MainFragment.newInstance();
+            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), mainFragment, R.id.contentFrame);
+        }
+
+        //create the presenter
+        mMainPresenter = new MainPresenter(mainFragment);
+
     }
 
-    private void initUI() {
-        mNewsList = (RecyclerView) findViewById(R.id.news_list);
-    }
 
     @Override
-    public void setPresenter(@NonNull MainContract.Presenter presenter) {
-//        mMainPresenter = checkNotNull(presenter);
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // Open the navigation drawer when the home icon is selected from the toolbar.
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mMainPresenter.onDestroy();
-    }
-
-    @Override
-    public void setItems(List<News> news) {
-
-        NewsRVAdapter rvAdapter = new NewsRVAdapter(this, news);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-
-        mNewsList.setLayoutManager(layoutManager);
-        mNewsList.setItemAnimator(new DefaultItemAnimator());
-        mNewsList.addItemDecoration(new DividerLinearItemDecoration(this, DividerLinearItemDecoration.VERTICAL_LIST));
-        mNewsList.setAdapter(rvAdapter);
-
-//        this.m_listNews = news;
-    }
-
-    @Override
     public void showMessage(String message, int time) {
         switch (time) {
             case 0:
@@ -82,10 +82,30 @@ public class MainActivity extends Activity implements MainContract.View {
         }
     }
 
-
-    @Override
-    public String getUrl() {
-        String u = null;
-        return u;
+    private void setupDrawerContent(NavigationView navigationView) {
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.nav_menu_today:
+                                break;//since we're already here, do nothing.
+                            case R.id.nav_menu_star:
+                                showMessage("Clicked the Star BTN", 0);
+                                //into the Collected page
+//                                Intent i = new Intent(MainActivity.this, StarNewsActivity.class);
+//                                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                                startActivity(i);
+                                break;
+                            default:
+                                break;
+                        }
+                        // Close the navigation drawer when an item is selected.
+                        item.setChecked(true);
+                        mDrawerLayout.closeDrawers();
+                        return true;
+                    }
+                }
+        );
     }
 }

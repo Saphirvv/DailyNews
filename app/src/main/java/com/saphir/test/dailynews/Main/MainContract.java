@@ -11,7 +11,7 @@ import java.util.List;
  * Created by Saphir
  * on 2016/4/19.
  */
-public class MainContract {
+public interface MainContract {
     interface View extends BaseView<Presenter> {
         /**
          * Setup RecyclerView

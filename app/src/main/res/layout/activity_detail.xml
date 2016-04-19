@@ -5,7 +5,7 @@
 
     <data>
 
-        <import type="com.saphir.test.dailynews.viewModel.DetailViewModel"/>
+        <import type="com.saphir.test.dailynews.Detail.DetailViewModel"/>
 
         <variable
             name="detailNews"

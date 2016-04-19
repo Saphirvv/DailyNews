@@ -9,6 +9,10 @@
         <item name="actionOverflowMenuStyle">@style/MenuStyle</item>
     </style>
 
+    <style name="Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.OverlapSystemBar" parent="AppTheme"/>
+
     <style name="MenuStyle" parent="@style/Widget.AppCompat.Light.PopupMenu.Overflow">
         <item name="overlapAnchor">false</item>
     </style>
