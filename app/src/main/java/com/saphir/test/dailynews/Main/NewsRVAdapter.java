@@ -31,7 +31,16 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.ViewHolder
 
     public NewsRVAdapter(Context c, List<News> list) {
         mContext = c;
-        mNewses = list;
+        setList(list);
+    }
+
+    public void replaceData(List<News> l) {
+        setList(l);
+    }
+
+    private void setList(List<News> newses) {
+        mNewses = newses;
+        notifyDataSetChanged();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

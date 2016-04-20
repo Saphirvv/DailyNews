@@ -16,13 +16,5 @@
             android:layout_height="wrap_content"
             tools:listitem="@layout/item_news"/>
 
-        <ProgressBar
-            android:id="@+id/loading_pb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="650px"
-            android:layout_marginTop="1000px"
-            android:visibility="gone"/>
-
     </com.zhy.autolayout.AutoRelativeLayout>
 </layout>

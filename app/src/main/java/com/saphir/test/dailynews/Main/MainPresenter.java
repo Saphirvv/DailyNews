@@ -10,6 +10,8 @@ import org.antlr.v4.runtime.misc.NotNull;
 
 import java.util.List;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 /**
  * HomePage - listens to users actions from the UI({@link MainActivity} ,
  * ---------- retrieves the data and updates the UI as required.
@@ -20,7 +22,7 @@ public class MainPresenter implements MainContract.Presenter, LoadNewsListIntera
 
     private static final int SHORT = 0;
     private static final int LONG = 1;
-    //通过接口得到rss地址
+
     //This is a MOCK url
     private String mUrl = "http://blog.sina.com.cn/rss/1267454277.xml";
 
@@ -28,13 +30,16 @@ public class MainPresenter implements MainContract.Presenter, LoadNewsListIntera
     private LoadNewsListInteractor mLoadNewsListInteractor;
 
     public MainPresenter(@NotNull MainContract.View mv) {
-        this.mMainView = mv;
+        mMainView = checkNotNull(mv, "MainView cannot bu null!");
         mMainView.setPresenter(this);
+
 //        if (mv.getUrl() != null) {
 //            this.mLoadNewsListInteractor = new LoadNewsListInteractorImpl(mv.getUrl());
 //        } else {
-//            mv.showMessage("读取新闻失败！请检查网络连接是否成功并重新进入！", LONG);
+//            mv.showMessage("读取新闻失败！请检查网络连接是否成功并重新进入！<br />" +
+//                              "Get Data Failed!Please check the Internet connection!", LONG);
 //        }
+
         this.mLoadNewsListInteractor = new LoadNewsListInteractorImpl(mUrl);
 
         Log.e("MainPresenter", "!!!---------loadurl————————");

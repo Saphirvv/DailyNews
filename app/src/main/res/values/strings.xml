@@ -7,6 +7,8 @@
     <string name="nav_title">每日新闻</string>
     <string name="nav_column1">今日资讯</string>
     <string name="nav_column2">我的收藏</string>
+    <string name="nav_column3">设置</string>
+    <string name="nav_column4">退出</string>
 
     <!--首页-->
     <string name="test_news_title">新闻标题</string>

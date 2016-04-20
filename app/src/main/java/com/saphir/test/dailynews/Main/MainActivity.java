@@ -97,6 +97,14 @@ public class MainActivity extends AppCompatActivity {
 //                                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 //                                startActivity(i);
                                 break;
+                            case R.id.nav_menu_setting:
+                                showMessage("Clicked the Setting BTN", 0);
+                                break;
+                            case R.id.nav_menu_exit:
+                                //kill this process to end the app
+                                //Maybe we could add a dialog to ensure what's user want to do
+                                android.os.Process.killProcess(android.os.Process.myPid());
+                                break;
                             default:
                                 break;
                         }

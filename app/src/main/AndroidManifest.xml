@@ -26,6 +26,9 @@
         <activity
             android:name=".Star.StarNewsActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Setting.SettingActivity"
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="design_width"

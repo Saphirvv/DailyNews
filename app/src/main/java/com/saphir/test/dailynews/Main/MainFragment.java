@@ -27,6 +27,7 @@ public class MainFragment extends Fragment implements MainContract.View {
 
     private RecyclerView mNewsList;
     private MainContract.Presenter mPresenter;
+    private NewsRVAdapter mAdapter;
 
     public MainFragment() {
         //an empty public constructor
@@ -41,6 +42,7 @@ public class MainFragment extends Fragment implements MainContract.View {
         mPresenter = checkNotNull(presenter);
     }
 
+
     @Override
     public void onResume() {
         super.onResume();
@@ -50,23 +52,32 @@ public class MainFragment extends Fragment implements MainContract.View {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        View root = inflater.inflate(R.layout.main_fragment, container, false);
+
+        mNewsList = (RecyclerView) root.findViewById(R.id.news_list);
+        mNewsList.setAdapter(mAdapter);
+
+        //maybe add the func of: scroll swipe down to refresh
+
+        return root;
     }
 
-    private void initUI() {
-        mNewsList = (RecyclerView) getActivity().findViewById(R.id.news_list);
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mPresenter.onDestroy();
     }
 
     @Override
     public void setItems(List<News> news) {
-        NewsRVAdapter rvAdapter = new NewsRVAdapter(this.getActivity(), news);
+        mAdapter = new NewsRVAdapter(getActivity(), news);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
         mNewsList.setLayoutManager(layoutManager);
         mNewsList.setItemAnimator(new DefaultItemAnimator());
         mNewsList.addItemDecoration(new DividerLinearItemDecoration(this.getActivity(), DividerLinearItemDecoration.VERTICAL_LIST));
-        mNewsList.setAdapter(rvAdapter);
+        mNewsList.setAdapter(mAdapter);
     }
 
     @Override
@@ -86,33 +97,4 @@ public class MainFragment extends Fragment implements MainContract.View {
         return null;
     }
 
-
-    //
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        mMainPresenter.start();
-//    }
-//
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        mMainPresenter.onDestroy();
-//    }
-//
-//    @Override
-//    public void setItems(List<News> news) {
-//
-//        NewsRVAdapter rvAdapter = new NewsRVAdapter(this, news);
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-//        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-//
-//        mNewsList.setLayoutManager(layoutManager);
-//        mNewsList.setItemAnimator(new DefaultItemAnimator());
-//        mNewsList.addItemDecoration(new DividerLinearItemDecoration(this, DividerLinearItemDecoration.VERTICAL_LIST));
-//        mNewsList.setAdapter(rvAdapter);
-//
-////        this.m_listNews = news;
-//    }
-//
 }
