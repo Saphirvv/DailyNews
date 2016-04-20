@@ -1,68 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              tools:context=".Detail.DetailActivity">
 
-    <data>
-
-        <import type="com.saphir.test.dailynews.Detail.DetailViewModel"/>
-
-        <variable
-            name="detailNews"
-            type="DetailViewModel"/>
-    </data>
-
-    <com.zhy.autolayout.AutoRelativeLayout
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="wrap_content">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/da_toolbar"
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            android:navigationIcon="@drawable/back_n"
-            android:title="@{detailNews.title}"
-            android:logo="@mipmap/ic_launcher"
-            tools:targetApi="lollipop"/>
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/Toolbar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+    </android.support.design.widget.AppBarLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <FrameLayout
-                android:id="@+id/fl_hide_under21"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/title_blue"
-                android:padding="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@{detailNews.title}"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"/>
-
-                <ImageView
-                    android:id="@+id/detail_iv_back"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/back_n"/>
-
-            </FrameLayout>
-
-            <WebView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:webUrl="@{detailNews.url}"/>
-
-        </LinearLayout>
-
-    </com.zhy.autolayout.AutoRelativeLayout>
-</layout>
+    <FrameLayout
+        android:id="@+id/contentFrame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

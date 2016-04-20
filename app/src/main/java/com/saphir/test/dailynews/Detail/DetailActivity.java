@@ -2,39 +2,47 @@ package com.saphir.test.dailynews.Detail;
 
 import android.content.Context;
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+import android.support.v7.widget.Toolbar;
 
 import com.saphir.test.dailynews.R;
-import com.saphir.test.dailynews.databinding.ActivityDetailBinding;
 import com.saphir.test.dailynews.model.News;
+import com.saphir.test.dailynews.utils.ActivityUtils;
 
 /**
- * 新闻详情页
  * Created by Saphir
  * on 2016/4/5.
  */
-public class DetailActivity extends AppCompatActivity implements DetailView, View.OnClickListener {
+public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_NEWS = "extra_news";
 
-    private DetailPresenter mDetailPresenter;
-    private ActivityDetailBinding binding;
+//    private ActivityDetailBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_detail);
-        mDetailPresenter = new DetailPresenterImpl(this);
+        setContentView(R.layout.activity_detail);
+//        binding = DataBindingUtil.setContentView(this, R.layout.detail_fragment);
 
-        initUI();
-    }
+        // Set up the toolbar.
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
+        ab.setDisplayShowHomeEnabled(true);//can turn back
 
-    private void initUI() {
+        // Get the requested news detail
+        News news = (News) getIntent().getSerializableExtra(EXTRA_NEWS);
 
-        findViewById(R.id.detail_iv_back).setOnClickListener(this);
+        DetailFragment detailFragment = (DetailFragment) getSupportFragmentManager().findFragmentById(R.id.contentFrame);
+        if (detailFragment == null) {
+            detailFragment = DetailFragment.newInstance(news);
+            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), detailFragment, R.id.contentFrame);
+        }
+
     }
 
     public static Intent launchDetail(Context context, News news) {
@@ -44,49 +52,11 @@ public class DetailActivity extends AppCompatActivity implements DetailView, Vie
         return intent;
     }
 
+    //turn back
     @Override
-    public void backToHome() {
-        this.finish();
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
-    @Override
-    public News getNews() {
-        Intent i = getIntent();
-        News n = (News) i.getSerializableExtra(EXTRA_NEWS);
-        return n;
-    }
-
-    @Override
-    public void setBinding(News news) {
-        DetailViewModel detailViewModel = new DetailViewModel(news);
-        binding.setDetailNews(detailViewModel);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mDetailPresenter.onResume();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mDetailPresenter.onDestroy();
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.detail_iv_back:
-                mDetailPresenter.onBackClick();
-                break;
-            default:
-                break;
-        }
-    }
-
-    @Override
-    public Context getContext() {
-        return DetailActivity.this;
-    }
 }

@@ -1,16 +1,32 @@
 package com.saphir.test.dailynews.Detail;
 
+import org.antlr.v4.runtime.misc.NotNull;
+
+import static com.google.common.base.Preconditions.checkNotNull;
+
 /**
- * 详情页 - 业务逻辑
- * 显示
+ * 详情页 - 业务逻辑实现
  * Created by Saphir
  * on 2016/4/8.
  */
-public interface DetailPresenter {
+public class DetailPresenter implements DetailContract.Presenter {
 
-    void onResume();
+    private DetailContract.View mdv;
 
-    void onDestroy();
+    public DetailPresenter(@NotNull DetailContract.View dv) {
+        mdv = checkNotNull(dv, "DetailView cannot bu null!");
+        mdv.setPresenter(this);
+    }
 
-    void onBackClick();
+    @Override
+    public void start() {
+
+    }
+
+    @Override
+    public void onDestroy() {
+        mdv = null;
+    }
+
+
 }

@@ -13,7 +13,7 @@ import com.saphir.test.dailynews.utils.FormatUtil;
  * on 2016/4/15.
  */
 public class DetailViewModel {
-    private static final int TITLE_MAX = 24;
+//    private static final int TITLE_MAX = 24;
 
     private News mNews;
 
@@ -21,9 +21,9 @@ public class DetailViewModel {
         mNews = news;
     }
 
-    public String getTitle() {
-        return FormatUtil.lengthFormat(mNews.getN_title(), TITLE_MAX);
-    }
+//    public String getTitle() {
+//        return FormatUtil.lengthFormat(mNews.getN_title(), TITLE_MAX);
+//    }
 
     public String getUrl() {
         return mNews.getN_href();
