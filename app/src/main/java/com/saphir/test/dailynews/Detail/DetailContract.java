@@ -2,7 +2,6 @@ package com.saphir.test.dailynews.Detail;
 
 import com.saphir.test.dailynews.BasePresenter;
 import com.saphir.test.dailynews.BaseView;
-import com.saphir.test.dailynews.model.News;
 
 /**
  * Created by Saphir

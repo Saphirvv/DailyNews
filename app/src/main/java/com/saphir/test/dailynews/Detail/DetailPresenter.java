@@ -5,7 +5,6 @@ import org.antlr.v4.runtime.misc.NotNull;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * 详情页 - 业务逻辑实现
  * Created by Saphir
  * on 2016/4/8.
  */
